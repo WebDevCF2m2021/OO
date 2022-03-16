@@ -65,7 +65,13 @@ var_dump($cahit);
 <h3>Affichez tous les méchants !</h3>
 
 <?php
-var_dump($mechantManager->getMechants())
+forEach($mechantManager->getMechants() as $mechant){
+    ?>
+    <p>Je suis le super méchant <?=$mechant["nameMechant"]?> avec <?= $mechant["experienceMechant"]?> d'expérience.</p>
+    <p>J'ai <?=$mechant["forceMechant"]?> de force et je suis actuellement <?= $mechant["statusMechant"]?"actif":"inactif" ?></p>
+    <hr/>
+<?php
+}
 ?>
 </body>
 
