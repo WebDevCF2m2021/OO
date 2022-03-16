@@ -14,9 +14,14 @@ try {
 
 // Instanciation de notre manager avec la connexion PDO
 $mechantManager = new MechantManager($db);
-
+var_dump($_POST);
 if(!empty($_POST)){
-    $mechantManager->insertMechant(new Mechant($_POST));
+    var_dump(new Mechant($_POST));
+    if($mechantManager->insertMechant(new Mechant($_POST))===true){
+        echo "Insertion done!";
+    }else{
+        echo "Insertion failed!";
+    }
 }
 
 ?>

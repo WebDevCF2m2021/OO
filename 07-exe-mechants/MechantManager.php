@@ -31,17 +31,17 @@ class MechantManager
         }
     }
 
-    public function insertMechant(Mechant $lui):bool|int{
+    public function insertMechant(Mechant $lui):bool|string{
         $sql = "INSERT INTO `mechant`( `nameMechant`, `forceMechant`, `experienceMechant`, `statusMechant`) VALUES (?,?,?,?)";
         $prepare = $this->pdo->prepare($sql);
         try{
             $prepare->bindValue(1,$lui->getNameMechant(),PDO::PARAM_STR);
-            $prepare->bindValue(2,$lui->getForceMechant(),PDO::PARAM_STR);
-            $prepare->bindValue(3,$lui->getExperienceMechant(),PDO::PARAM_STR);
-            $prepare->bindValue(4,$lui->getStatusMechant(),PDO::PARAM_STR);
+            $prepare->bindValue(2,$lui->getForceMechant(),PDO::PARAM_INT);
+            $prepare->bindValue(3,$lui->getExperienceMechant(),PDO::PARAM_INT);
+            $prepare->bindValue(4,$lui->getStatusMechant(),PDO::PARAM_BOOL);
             return $prepare->execute();
         }catch(Exception $e){
-            return $e->getCode();
+           return $e->getMessage();
         }
     }
 

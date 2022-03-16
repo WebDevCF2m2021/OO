@@ -95,9 +95,9 @@ class Mechant
      *
      * @return Mechant
      */
-    public function setStatusMechant(bool $statusMechant) : Mechant
+    public function setStatusMechant(string $statusMechant) : Mechant
     {
-        $this->statusMechant = $statusMechant;
+        $this->statusMechant = $statusMechant === "true";
         return $this;
     }
 
