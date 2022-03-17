@@ -1,9 +1,16 @@
 <?php
 // chargement des dépendances
 require_once "./config.php";
+/*
 require_once "./traits/hydrate.php";
 require_once "./Mechant.php";
 require_once "./MechantManager.php";
+*/
+
+// Autoload
+spl_autoload_register(function ($class) {
+    include_once $class . '.php';
+});
 
 // tentative de connexion à notre DB
 try {
