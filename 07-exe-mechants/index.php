@@ -1,7 +1,7 @@
 <?php
 // chargement des dépendances
 require_once "./config.php";
-require_once "./traits/hydrate.php";
+require_once "./Traits/Hydrate.php";
 require_once "./Mechant.php";
 require_once "./MechantManager.php";
 

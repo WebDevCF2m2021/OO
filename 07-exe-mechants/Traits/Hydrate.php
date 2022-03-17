@@ -2,7 +2,7 @@
 
 namespace Traits;
 
-trait hydrate
+trait Hydrate
 {
     private function hydrate(array $properties):void{
         foreach($properties as $property => $value){
