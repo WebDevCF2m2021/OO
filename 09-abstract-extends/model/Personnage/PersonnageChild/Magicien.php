@@ -9,12 +9,24 @@ class Magicien extends Personnage
     // pour un magicien, on choisi l'initialisation
     protected function initialiser()
     {
+
         // force en prenant une classe statique (self::dice())
         $this->setForcePerso(self::dice(2)[0]);
+        $this->setDegats(array_sum(self::dice(3,5)));
+        $this->setNiveau(0);
+        $this->setExperience(0);
+        $this->setVie(self::VIE_DE_BASE - array_sum(self::dice(30,12)));
     }
 
+    public static function dice(int $side = 20, int $roll = 1,): array
+    {
+        for ($i = 0; $i < $roll; $i++) {
+            $des[]=mt_rand(1, ($side+20));
+        }
+        return $des;
+    }
 
-    public function frapper($autre)
+    public function frapper(Personnage $autre)
     {
         // TODO: Implement frapper() method.
     }

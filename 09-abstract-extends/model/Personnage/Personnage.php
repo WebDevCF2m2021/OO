@@ -232,7 +232,7 @@ abstract class Personnage
 
     abstract protected function initialiser();
 
-    abstract public function frapper($autre);
+    abstract public function frapper(Personnage $autre);
 
     abstract public function parer($autre);
 
