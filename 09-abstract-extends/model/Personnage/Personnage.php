@@ -147,7 +147,7 @@ abstract class Personnage
     public function setNom(string $nom): Personnage|Exception
     {
         $nom = strip_tags(trim($nom));
-        if (strlen($nom) >= 4 && strlen($nom) <= 60) {
+        if (strlen($nom) >= 2 && strlen($nom) <= 60) {
             $this->nom = htmlspecialchars($nom,ENT_QUOTES);
         } else {
             throw new Exception("Le nom doit être composé de 4 à 60 caractères");
@@ -234,19 +234,19 @@ abstract class Personnage
 
     abstract public function frapper(Personnage $autre);
 
-    abstract public function parer($autre);
+    abstract public function parer(Personnage $autre);
 
-    abstract public function esquiver($autre);
+    abstract public function esquiver(Personnage $autre);
 
-    abstract public function soigner($autre);
+    abstract public function soigner(Personnage $autre);
 
-    abstract protected function mourir($autre);
+    abstract protected function mourir(this $autre);
 
-    abstract protected function updateNiveau($autre);
+    abstract protected function updateNiveau(this $autre);
 
-    abstract protected function updateExperience($autre);
+    abstract protected function updateExperience(this $autre);
 
-    abstract protected function updateVie($autre);
+    abstract protected function updateVie(this $autre);
 
 
 

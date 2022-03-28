@@ -5,6 +5,9 @@ require_once "model/MyPDO.php";
 require_once "model/Personnage/Personnage.php";
 require_once "model/Personnage/PersonnageManager.php";
 require_once "model/Personnage/PersonnageChild/Magicien.php";
+require_once "model/Personnage/PersonnageChild/MagicienDeGlace.php";
+
+
 
 // tentative de connexion à notre DB avec notre classe étendue de PDO : MyPDO
 try {
@@ -12,6 +15,8 @@ try {
 } catch (Exception $e) {
     die($e->getMessage());
 }
+
+$PersonnageManager = new PersonnageManager($connectMyPDO);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +37,21 @@ $Pierre = new Magicien([
         'theclassID'=>1,
 ]);
 var_dump($Pierre);
+
+echo $PersonnageManager->insertPersonnage($Pierre);
+
+$Luc = new MagicienDeGlace([
+    'nom'=>'Luc',
+    'theclassID'=>1]);
+
+$PersonnageManager->insertPersonnage($Luc);
+
+$Pierre->frapper($Luc,25);
+echo "<hr>";
+$Luc->frapper($Pierre);
+echo "<hr>";
+$Luc->frapper($Luc);
+
 ?>
 
 </body>

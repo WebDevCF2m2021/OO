@@ -4,6 +4,7 @@ class Magicien extends Personnage
 {
 
 
+
     // Nos méthodes abstraites
 
     // pour un magicien, on choisi l'initialisation
@@ -26,9 +27,9 @@ class Magicien extends Personnage
         return $des;
     }
 
-    public function frapper(Personnage $autre)
+    public function frapper(Personnage $autre, $dd=5)
     {
-        // TODO: Implement frapper() method.
+        echo $this->getNom(). " frappe ".$autre->getNom();
     }
 
     public function parer($autre)

@@ -1,4 +1,5 @@
 <?php
+
 // classe étendue de PDO
 class MyPDO extends PDO
 {

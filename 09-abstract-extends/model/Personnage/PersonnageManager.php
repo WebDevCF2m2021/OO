@@ -17,10 +17,10 @@ class PersonnageManager
     }
 
     // insertion d'un Personnage
-    public function insertPersonnage(Personnage $item): bool|int
+    public function insertPersonnage(Personnage $item): bool|int|string
     {
         // request
-        $sql = "INSERT INTO `personnage`(`nom`, `forcePerso`, `degats`, `niveau`, `experience`, `vie`) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO `personnage`(`nom`, `forcePerso`, `degats`, `niveau`, `experience`, `vie`, `theclassID`) VALUES (?,?,?,?,?,?,?)";
         // requête préparée
         $prepare = $this->connection->prepare($sql);
 
@@ -32,11 +32,12 @@ class PersonnageManager
                 $item->getNiveau(),
                 $item->getExperience(),
                 $item->getVie(),
+                $item->getTheclassID(),
 
             ]);
             return true;
         }catch(Exception $e){
-            return $e->getCode();
+            return $item->getNom()." Est déjà pris!";
         }
 
     }
