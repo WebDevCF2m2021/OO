@@ -1,6 +1,6 @@
 <?php
 // mapping de la table personnage en PHP 8.0
-// le abstract devant le nom de la classe empèche l'instanciation de celle-ci
+// le abstract devant le nom de la classe empêche l'instanciation de celle-ci
 abstract class Personnage
 {
     // Attributs ou propriétés, en général toujours protected (ou private) - À partir de PHP 7.4, on type nos attributs : https://www.php.net/manual/fr/migration74.new-features.php
@@ -25,6 +25,13 @@ abstract class Personnage
     {
         // tentative d'hydration des données de Personnage
         $this->hydrate($tab);
+
+        // on va vérifier si c'est une nouvelle instanciation (Id est uninitialized ou null)
+        if(!isset($this->idPersonnage)){
+            // on initialise dans l'enfant car c'est une méthode abstraite dans une classe abstraite
+            $this->initialiser();
+        }
+
     }
 
     // création de notre hydratation, en partant d'un tableau associatif et de ses clefs, on va régénérer le nom des setters existants
@@ -32,7 +39,7 @@ abstract class Personnage
         // tant qu'on a des éléments dans le tableau
         foreach($assoc as $clef => $valeur){
             // création du nom de la méthode
-            echo $methodeName = "set".ucfirst($clef);
+            $methodeName = "set".ucfirst($clef);
             // si la méthode existe
             if(method_exists($this,$methodeName)){
                 $this->$methodeName($valeur);
@@ -209,9 +216,22 @@ abstract class Personnage
         return $this;
     }
 
+    // jet de dé statique (side = face et roll = nombre de jet)
+    public static function dice(int $side = 20, int $roll = 1): array
+    {
+        for ($i = 0; $i < $roll; $i++) {
+            $des[]=mt_rand(1, ($side));
+        }
+        return $des;
+    }
+
+
     /*
      * Créations de méthodes abstraites, qui doivent être redéfinies pour être fonctionnelles dans les enfants !
      */
+
+    abstract protected function initialiser();
+
     abstract public function frapper($autre);
 
     abstract public function parer($autre);

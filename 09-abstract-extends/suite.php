@@ -23,7 +23,10 @@ try {
 <a href="./">Accueil</a>
 <h3>Magicien est étendu de Personnage</h3>
 <p>Pour interdire l'instanciation de Personnage, on va utiliser le terme abstract</p>
+<p>Une méthode statique ne doit pas être instanciée pour être appelée avec le nom de la classe et l'opérateur de la résolution de portée ::</p>
 <?php
+// Méthode statique non instanciée
+var_dump(Magicien::dice(6,5),Personnage::dice(roll:3));
 $Pierre = new Magicien([]);
 var_dump($Pierre);
 ?>

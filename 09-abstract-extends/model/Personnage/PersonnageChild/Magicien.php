@@ -2,6 +2,18 @@
 // Magicien est étendu de Personnage
 class Magicien extends Personnage
 {
+
+
+    // Nos méthodes abstraites
+
+    // pour un magicien, on choisi l'initialisation
+    protected function initialiser()
+    {
+        // force en prenant une classe statique (self::dice())
+        $this->setForcePerso(self::dice(2)[0]);
+    }
+
+
     public function frapper($autre)
     {
         // TODO: Implement frapper() method.
