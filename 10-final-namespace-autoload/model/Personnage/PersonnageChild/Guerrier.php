@@ -2,26 +2,21 @@
 
 namespace model\Personnage\PersonnageChild;
 
-// Magicien est étendu de Personnage
 use model\Personnage\Personnage;
 
-class Magicien extends Personnage
+final class Guerrier extends Personnage
 {
 
-
-
-    // Nos méthodes abstraites
-
-    // pour un magicien, on choisi l'initialisation
     protected function initialiser()
     {
 
         // force en prenant une classe statique (self::dice())
-        $this->setForcePerso(self::dice(2)[0]);
-        $this->setDegats(array_sum(self::dice(3,5)));
+        $this->setForcePerso(self::dice(5)[0]);
+        $this->setDegats(array_sum(self::dice(5,5)));
         $this->setNiveau(0);
         $this->setExperience(0);
-        $this->setVie(self::VIE_DE_BASE - array_sum(self::dice(30,12)));
+        $this->setVie(self::VIE_DE_BASE + array_sum(self::dice(30,12)));
+        echo "Guerrier créé";
     }
 
 
@@ -65,5 +60,4 @@ class Magicien extends Personnage
     {
         // TODO: Implement updateVie() method.
     }
-
 }

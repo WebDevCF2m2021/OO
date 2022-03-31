@@ -1,4 +1,6 @@
 <?php
+// espace de travail Personnage
+namespace model\Personnage;
 // mapping de la table personnage en PHP 8.0
 // le abstract devant le nom de la classe empêche l'instanciation de celle-ci
 abstract class Personnage
@@ -240,13 +242,13 @@ abstract class Personnage
 
     abstract public function soigner(Personnage $autre);
 
-    abstract protected function mourir(this $autre);
+    abstract protected function mourir($autre);
 
-    abstract protected function updateNiveau(this $autre);
+    abstract protected function updateNiveau($autre);
 
-    abstract protected function updateExperience(this $autre);
+    abstract protected function updateExperience($autre);
 
-    abstract protected function updateVie(this $autre);
+    abstract protected function updateVie($autre);
 
 
 

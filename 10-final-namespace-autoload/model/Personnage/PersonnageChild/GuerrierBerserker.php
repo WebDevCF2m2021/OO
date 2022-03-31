@@ -2,7 +2,7 @@
 
 namespace model\Personnage\PersonnageChild;
 
-class MagicienDeGlace extends Magicien
+class GuerrierBerserker extends Guerrier
 {
 
 }

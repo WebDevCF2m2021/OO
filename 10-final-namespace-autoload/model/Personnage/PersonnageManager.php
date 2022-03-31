@@ -1,8 +1,12 @@
 <?php
-
+// espace de travail Personnage
 namespace model\Personnage;
+// utilisation de MyPDO qui ne se trouve pas dans le même espace de travail
+use model\MyPDO;
 
 // gestion de la table mappée Personnage
+// use model\MyPDO;
+
 class PersonnageManager
 {
     // Attributs

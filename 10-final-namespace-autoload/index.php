@@ -3,12 +3,19 @@
 require_once "config.php";
 
 // Si on ne trouve pas une classe (instanciation new Personnage() ou la classe elle même  Personnage::class) on lance une fonction anonyme (closure) qui va chercher la classe via son namespace
-spl_autoload_register(function ($class) {
+spl_autoload_register(function($class){
     include_once  $class . '.php';
 });
+/*
+spl_autoload_register(fn ($class) =>
+include_once  $class . '.php'
+);
+*/
 
 // utilisation d'un PersonnageManager spécifique
 use model\Personnage\PersonnageManager;
+use model\Personnage\PersonnageChild\MagicienDeGlace;
+use model\Personnage\PersonnageChild\Magicien;
 
 /* Autant de dépendances que nécessaires
 require_once "model/MyPDO.php";
@@ -31,8 +38,11 @@ $PersonnageManager = new PersonnageManager($connectMyPDO);
 var_dump(MagicienDeGlace::dice());
 
 $Luc = new Magicien([]);
-var_dump($Luc);
-
+$Pierre = new MagicienDeGlace([]);
+$Saber = new model\Personnage\PersonnageChild\Guerrier([]);
+var_dump($Luc,$Pierre,$Saber);
+echo "<h3>Guerrier étant final, on ne peut l'étendre pour GuerrierBerserker</h3>";
+$SCahit = new model\Personnage\PersonnageChild\GuerrierBerserker([]);
 ?>
 
 
