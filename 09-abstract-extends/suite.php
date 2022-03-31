@@ -52,7 +52,13 @@ $Luc->frapper($Pierre);
 echo "<hr>";
 $Luc->frapper($Luc);
 
-?>
-
+?><h3>Méthode statique</h3>
+<p>Permet d'accéder à une méthode sans instancier la classe - Toujours publique</p>
+<p>Mais elle doit exister et utiliser l'opérateur de résolution de portée (::) : var_dump(Personnage::dice()) depuis la classe parent :<br>
+<?php var_dump(Personnage::dice());?></p>
+<p>var_dump(Magicien::dice()) depuis une classe enfant<br>
+    <?php var_dump(Magicien::dice());?></p>
+<p>Non conseillé mais faisable, depuis une instance  (::) : var_dump($Pierre::dice(6,3))<br>
+    <?php var_dump($Pierre::dice(6,3));?></p>
 </body>
 </html>

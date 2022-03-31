@@ -19,13 +19,7 @@ class Magicien extends Personnage
         $this->setVie(self::VIE_DE_BASE - array_sum(self::dice(30,12)));
     }
 
-    public static function dice(int $side = 20, int $roll = 1,): array
-    {
-        for ($i = 0; $i < $roll; $i++) {
-            $des[]=mt_rand(1, ($side+20));
-        }
-        return $des;
-    }
+
 
     public function frapper(Personnage $autre, $dd=5)
     {
