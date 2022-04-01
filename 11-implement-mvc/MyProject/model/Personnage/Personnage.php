@@ -4,10 +4,11 @@ namespace MyProject\model\Personnage;
 
 // on a besoin de la classe native Exception
 use Exception;
+use MyProject\model\PersonnageInterface;
 
 // mapping de la table personnage en PHP 8.0
 // le abstract devant le nom de la classe empêche l'instanciation de celle-ci
-abstract class Personnage
+abstract class Personnage implements PersonnageInterface
 {
     // Attributs ou propriétés, en général toujours protected (ou private) - À partir de PHP 7.4, on type nos attributs : https://www.php.net/manual/fr/migration74.new-features.php
     protected int|null $idPersonnage; // le choix est possible autrement qu'avec ?int (int ou null en php 7)
@@ -23,7 +24,11 @@ abstract class Personnage
     public const VIE_DE_BASE = 1000;
 
 
-    // méthodes
+    // méthodes venant de l'implement
+    public function getNomAndLifeState():string
+    {
+        return "<p>Je suis {$this->getNom()} et je suis ".( self::VIVANT ? "vivant": "mort")."</p>";
+    }
 
 
     // constructeur - Appelé lors de l'instanciation

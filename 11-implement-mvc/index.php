@@ -33,12 +33,15 @@ echo "<h3>Création d'instances des 3 classes instanciables de type Personnage</
 echo "<p>Guerrier : ";
 $joueur1 = new Guerrier(["nom"=>"Manu"]);
 var_dump($joueur1);
+echo $joueur1->getNomAndLifeState();
 echo "</p>";
 echo "<p>Magicien : ";
 $joueur2 = new Magicien(["nom"=>"Saber"]);
 var_dump($joueur2);
+echo $joueur2->getNomAndLifeState();
 echo "</p>";
 echo "<p>Magicien de Glace : ";
 $joueur3 = new MagicienDeGlace(["nom"=>"Belgique"]);
 var_dump($joueur3);
+echo $joueur3->getNomAndLifeState();
 echo "</p>";
